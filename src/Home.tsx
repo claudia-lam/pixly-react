@@ -15,15 +15,33 @@ function Home() {
 
   async function handleSubmit(evt) {
     evt.preventDefault();
+    const formData = new FormData();
+    formData.append("image", selectedFile);
+
+    // const data = {
+    //   filename: selectedFile.name,
+    //   filetype: selectedFile.type,
+    //   size: selectedFile.size
+    // }
+
+    // formData.append(data)
+
+    const headers = {
+      "Content-Type": "multipart/form-data"
+    };
+    // formData.append("filename", selectedFile.name);
+
     //TODO: move this call to an api file
+    console.log(formData);
     console.log("select file name - HOME", selectedFile);
     try {
-      const result = await axios.post(`${BASE_URL}/api/add`, {
-        file: selectedFile,
-      });
+      const result = await axios.post(`${BASE_URL}/api/add`, formData, {headers:headers});
+      console.log(result);
+
     } catch (err) {
       console.log(err);
     }
+
   }
 
   return (
