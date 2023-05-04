@@ -1,0 +1,9 @@
+.ImageList {
+  width: 40%;
+  height: 40%;
+}
+
+img {
+  width: 40%;
+  height: auto;
+}

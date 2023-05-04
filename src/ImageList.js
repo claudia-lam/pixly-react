@@ -1,5 +1,24 @@
-function ImageList() {
+import { useState } from "react";
+import "./ImageList.css";
+import ImageEdit from "./ImageEdit";
 
+function ImageList({ images }) {
+  const [imageEditing, setImageEditing] = useState(null);
+
+  function editImage(evt) {
+    evt.preventDefault();
+    const img = evt.target.src;
+    setImageEditing(img);
+  }
+  //TODO: fix the alt tag
+  return (
+    <div className="ImageList">
+      {images.map((img, i) => (
+        <img key={i} src={img} alt={i} onClick={editImage}></img>
+      ))}
+      <ImageEdit image={imageEditing} />
+    </div>
+  );
 }
 
-export default ImageList
+export default ImageList;

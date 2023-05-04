@@ -1,6 +1,7 @@
 import React from "react";
 import { useState } from "react";
 import axios from "axios";
+import ImageList from "./ImageList";
 
 const BASE_URL = "http://localhost:5001";
 
@@ -20,21 +21,21 @@ function Home() {
     formData.append("image", selectedFile);
 
     const headers = {
-      "Content-Type": "multipart/form-data"
+      "Content-Type": "multipart/form-data",
     };
 
     //TODO: move this call to an api file
     console.log(formData);
     console.log("select file name - HOME", selectedFile);
     try {
-      const result = await axios.post(`${BASE_URL}/api/add`, formData, {headers:headers});
-      setImages(imgs => [...imgs, result.data])
+      const result = await axios.post(`${BASE_URL}/api/add`, formData, {
+        headers: headers,
+      });
+      setImages((imgs) => [...imgs, result.data]);
       console.log(images);
-
     } catch (err) {
       console.log(err);
     }
-
   }
 
   return (
@@ -56,6 +57,7 @@ function Home() {
       <div>
         <button onClick={handleSubmit}>Submit</button>
       </div>
+      <ImageList images={images} />
     </div>
   );
 }
