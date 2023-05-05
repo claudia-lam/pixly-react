@@ -17,10 +17,18 @@ function ImageEdit({ image }) {
   const [styles, setStyles] = useState({ filter: "" });
 
   function generateStyles(evt) {
+    const style = evt.target.value;
+
+    if (styles.filter.includes(style)) {
+    }
+    console.log(styles);
     setStyles((styles) => {
       return {
         ...styles,
-        filter: styles.filter + evt.target.value,
+        filter:
+          styles.filter && styles.filter.includes(style)
+            ? styles.filter.replace(style, "").trim()
+            : `${styles.filter} ${style}`,
       };
     });
   }
@@ -35,7 +43,6 @@ function ImageEdit({ image }) {
               onClick={generateStyles}
               value="grayscale(100%)"
               className="black-white"
-              outline
             >
               B&W
             </Button>
@@ -47,6 +54,23 @@ function ImageEdit({ image }) {
               outline
             >
               Contrast
+            </Button>
+            <Button
+              color="warning"
+              onClick={generateStyles}
+              value="sepia(100%)"
+              className="sepia"
+              outline
+            >
+              Sepia
+            </Button>
+            <Button
+              color="info"
+              onClick={generateStyles}
+              value="invert(100%)"
+              className="invert"
+            >
+              Invert
             </Button>
           </div>
         </div>

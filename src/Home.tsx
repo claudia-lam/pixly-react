@@ -5,6 +5,7 @@ import ImageEdit from "./ImageEdit";
 import "./Home.css";
 import PixlyApi from "./Api";
 import FileForm from "./FileForm";
+import sampleImgs from "./SampleImgs";
 
 /** Controls the entire app
  *
@@ -21,7 +22,7 @@ import FileForm from "./FileForm";
  */
 
 function Home() {
-  const [images, setImages] = useState([]);
+  const [images, setImages] = useState(sampleImgs);
   const [imageEditing, setImageEditing] = useState(null);
 
   /** Triggered by file form submit; reloads images. */

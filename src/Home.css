@@ -4,8 +4,9 @@
     font-family: 'VT323', monospace;
     border: solid;
     border-radius: 5px;
+    border-color: rgb(172, 172, 172);
     margin: 20px;
-    background-color: aliceblue;
+    background-color: rgb(48, 48, 48);
 }
 
 .Home h1 {

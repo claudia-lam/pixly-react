@@ -14,6 +14,7 @@ import "./ImageList.css";
 function ImageList({ images, editImage }) {
   return (
     <div className="ImageList">
+      <h4>Select an image to edit!</h4>
       {images.map((img, i) => (
         <img key={i} src={img} alt={i} onClick={editImage}></img>
       ))}
