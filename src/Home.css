@@ -1,0 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+
+.Home {
+    font-family: 'VT323', monospace;
+    border: solid;
+    border-radius: 5px;
+    margin: 20px;
+    background-color: aliceblue;
+}
+
+.Home h1 {
+    font-size: 60px;
+}
+
+.Home .upload-form{
+    font-size: small;
+    padding: 10px;
+}
+
+.Home .file-info {
+    padding-top: 10px;
+    background-color: rgb(253, 245, 233);
+}

@@ -1,0 +1,12 @@
+.ImageEdit {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 8px;
+}
+
+.ImageEdit .btns {
+    flex-direction: row;
+    gap: 10px;
+}
