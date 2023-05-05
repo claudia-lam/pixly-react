@@ -32,7 +32,6 @@ function Home() {
     };
 
     const response = await PixlyApi.fetchImg(headers, image);
-    // console.log("response- home", response);
     setImages((imgs) => [...imgs, response]);
   }
 
@@ -41,7 +40,6 @@ function Home() {
     evt.preventDefault();
     const img = evt.target.src;
     setImageEditing(img);
-    // console.log("editing img", imageEditing);
   }
 
   return (

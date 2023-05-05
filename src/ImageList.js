@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./ImageList.css";
 
 /** Show list of all images
@@ -13,6 +12,7 @@ import "./ImageList.css";
  */
 function ImageList({ images, editImage }) {
   return (
+    //TODO: update key and alt to be more accurate/unique
     <div className="ImageList">
       <h4>Select an image to edit!</h4>
       {images.map((img, i) => (

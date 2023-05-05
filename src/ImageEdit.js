@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Button } from "reactstrap";
 import "./ImageEdit.css";
+import * as htmlToImage from "html-to-image";
+import { toJpeg } from "html-to-image";
 
 /** Edits an image
  *
@@ -10,34 +12,52 @@ import "./ImageEdit.css";
  * State:
  *  - styles: object for css styling
  *            {filter: 'grayscale(100%) contrast(50%)', color: 'green'}
+ *  - saveBtnText: string
  *
  * Home -> ImageEdit
  */
 function ImageEdit({ image }) {
-  const [styles, setStyles] = useState({ filter: "" });
+  const resetImage = { filter: "" };
+  const [styles, setStyles] = useState(resetImage);
+  const [saveBtnText, setsaveBtnText] = useState("Save");
 
   function generateStyles(evt) {
     const style = evt.target.value;
 
-    if (styles.filter.includes(style)) {
+    if (style === "reset") {
+      setStyles(resetImage);
+    } else {
+      setStyles((styles) => {
+        return {
+          ...styles,
+          filter:
+            styles.filter?.includes(style)
+              ? styles.filter.replace(style, "").trim()
+              : `${styles.filter} ${style}`,
+        };
+      });
     }
-    console.log(styles);
-    setStyles((styles) => {
-      return {
-        ...styles,
-        filter:
-          styles.filter && styles.filter.includes(style)
-            ? styles.filter.replace(style, "").trim()
-            : `${styles.filter} ${style}`,
-      };
-    });
+  }
+
+  //TODO: this might work for download
+  // async function downloadImg() {
+  //   const img = document.getElementById("edited-image");
+  //   const dataUrl = await htmlToImage.toJpeg(img, { quality: 0.95 });
+  //   const link = document.createElement("a");
+  //   link.download = "my-image-name.jpeg";
+  //   link.href = dataUrl;
+  //   link.click();
+  // }
+
+  function changeText() {
+    setsaveBtnText(`jk it's broken`);
   }
 
   return (
     <div>
       {image ? (
         <div className="ImageEdit">
-          <img src={image} style={styles} alt={image}></img>
+          <img id="edited-image" src={image} style={styles} alt={image}></img>
           <div className="ImageEdit btns">
             <Button
               onClick={generateStyles}
@@ -72,9 +92,31 @@ function ImageEdit({ image }) {
             >
               Invert
             </Button>
+            <Button
+              color="danger"
+              onClick={generateStyles}
+              value="reset"
+              className="reset"
+              outline
+            >
+              Reset
+            </Button>
+            <Button
+              color="success"
+              onClick={changeText}
+              value="save"
+              className="save"
+              outline
+            >
+              {saveBtnText}
+            </Button>
           </div>
         </div>
-      ) : null}
+      ) : (
+        <div>
+          <h2>No image selected</h2>
+        </div>
+      )}
     </div>
   );
 }

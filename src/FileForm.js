@@ -6,6 +6,14 @@ import { Button } from "reactstrap";
  *
  * Shows form and manages update to state on changes.
  *
+ * Props:
+ * - addImage () : function
+ *
+ * State:
+ *  - selectedFile : file object
+ *  - isFilePicked : boolean
+ *  - formErrors : array of errors
+ *
  * On submission:
  * - calls addImage function prop
  *
