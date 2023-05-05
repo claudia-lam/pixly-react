@@ -9,7 +9,7 @@ const BASE_URL = "http://localhost:5001";
  */
 
 class PixlyApi {
-  static async fetchImg(headers, formData) {
+  static async fetchImg(headers: object, formData: object) {
     const result = await axios.post(`${BASE_URL}/api/add`, formData, {
       headers: headers,
     });

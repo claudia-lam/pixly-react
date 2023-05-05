@@ -1,9 +1,11 @@
 .ImageList {
   min-height: 500px;
   background-color: #79aef2;
+  padding: 20px;
 }
 
 img {
   width: 40%;
   height: auto;
+  border-radius: 5px;
 }

@@ -12,7 +12,6 @@ import "./ImageList.css";
  * Home -> ImageList
  */
 function ImageList({ images, editImage }) {
-  //TODO: fix the alt tag
   return (
     <div className="ImageList">
       {images.map((img, i) => (

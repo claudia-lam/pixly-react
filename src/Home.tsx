@@ -25,12 +25,13 @@ function Home() {
   const [imageEditing, setImageEditing] = useState(null);
 
   /** Triggered by file form submit; reloads images. */
-  async function addImage(image) {
+  async function addImage(image: object) {
     const headers = {
       "Content-Type": "multipart/form-data",
     };
 
     const response = await PixlyApi.fetchImg(headers, image);
+    // console.log("response- home", response);
     setImages((imgs) => [...imgs, response]);
   }
 

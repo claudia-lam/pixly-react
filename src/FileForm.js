@@ -40,28 +40,30 @@ function FileForm({ addImage }) {
   return (
     <div className="FileForm">
       <div className="Home upload-form">
-        <input type="file" name="file" onChange={changeHandler} />
-        {isFilePicked ? (
-          <div className="Home file-info">
-            <p>Filename: {selectedFile.name}</p>
-            <p>Filetype: {selectedFile.type}</p>
-            <p>Size in bytes: {selectedFile.size}</p>
-            <p>
-              lastModifiedDate:{" "}
-              {selectedFile.lastModifiedDate.toLocaleDateString()}
-            </p>
+        <form>
+          <input type="file" name="file" onChange={changeHandler} />
+          {isFilePicked ? (
+            <div className="Home file-info">
+              <p>Filename: {selectedFile.name}</p>
+              <p>Filetype: {selectedFile.type}</p>
+              <p>Size in bytes: {selectedFile.size}</p>
+              <p>
+                lastModifiedDate:{" "}
+                {selectedFile.lastModifiedDate.toLocaleDateString()}
+              </p>
+            </div>
+          ) : (
+            <p>Select a file to show details</p>
+          )}
+          {formErrors.length ? (
+            <p>{`Image unsuccessfully added ${formErrors.message}`}</p>
+          ) : null}
+          <div>
+            <Button color="primary" onClick={handleSubmit} outline>
+              Submit
+            </Button>
           </div>
-        ) : (
-          <p>Select a file to show details</p>
-        )}
-        {formErrors.length ? (
-          <p>{`Image unsuccessfully added ${formErrors.message}`}</p>
-        ) : null}
-        <div>
-          <Button color="primary" onClick={handleSubmit} outline>
-            Submit
-          </Button>
-        </div>
+        </form>
       </div>
     </div>
   );
