@@ -1,15 +1,17 @@
 import { useState } from "react";
 import "./ImageList.css";
-import ImageEdit from "./ImageEdit";
 
+/** Show list of all images
+ *
+ * Props:
+ *  - images: [imgUrl1, imgUrl2,...]
+ *  - editImage: function to call when image is clicked
+ *
+ * State: none
+ *
+ * Home -> ImageList
+ */
 function ImageList({ images, editImage }) {
-  // const [imageEditing, setImageEditing] = useState(null);
-
-  // function editImage(evt) {
-  //   evt.preventDefault();
-  //   const img = evt.target.src;
-  //   setImageEditing(img);
-  // }
   //TODO: fix the alt tag
   return (
     <div className="ImageList">

@@ -5,6 +5,7 @@ import { Button } from "reactstrap";
 /** Form for uploading an image
  *
  * Shows form and manages update to state on changes.
+ *
  * On submission:
  * - calls addImage function prop
  *

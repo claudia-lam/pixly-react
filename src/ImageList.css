@@ -1,7 +1,6 @@
 .ImageList {
-  width: 40%;
-  height: 40%;
-  margin: 10px;
+  min-height: 500px;
+  background-color: #79aef2;
 }
 
 img {
